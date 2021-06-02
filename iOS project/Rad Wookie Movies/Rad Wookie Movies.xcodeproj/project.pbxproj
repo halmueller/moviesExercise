@@ -15,6 +15,9 @@
 		2B3059D9266460C90062FAF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B3059D7266460C90062FAF6 /* LaunchScreen.storyboard */; };
 		2B3059E4266460C90062FAF6 /* Rad_Wookie_MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3059E3266460C90062FAF6 /* Rad_Wookie_MoviesTests.swift */; };
 		2B3059EF266460C90062FAF6 /* Rad_Wookie_MoviesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3059EE266460C90062FAF6 /* Rad_Wookie_MoviesUITests.swift */; };
+		2B305A0A2667402C0062FAF6 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B305A072667402C0062FAF6 /* Genre.swift */; };
+		2B305A0B2667402C0062FAF6 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B305A082667402C0062FAF6 /* Movie.swift */; };
+		2B305A0C2667402C0062FAF6 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B305A092667402C0062FAF6 /* Person.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		2B3059EA266460C90062FAF6 /* Rad Wookie MoviesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Rad Wookie MoviesUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B3059EE266460C90062FAF6 /* Rad_Wookie_MoviesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rad_Wookie_MoviesUITests.swift; sourceTree = "<group>"; };
 		2B3059F0266460C90062FAF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2B305A072667402C0062FAF6 /* Genre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		2B305A082667402C0062FAF6 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		2B305A092667402C0062FAF6 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,7 @@
 				2B3059CC266460C80062FAF6 /* AppDelegate.swift */,
 				2B3059CE266460C80062FAF6 /* SceneDelegate.swift */,
 				2B3059D0266460C80062FAF6 /* ViewController.swift */,
+				2B305A0626673F0C0062FAF6 /* Movies */,
 				2B3059D2266460C80062FAF6 /* Main.storyboard */,
 				2B3059D5266460C90062FAF6 /* Assets.xcassets */,
 				2B3059D7266460C90062FAF6 /* LaunchScreen.storyboard */,
@@ -126,6 +133,16 @@
 				2B3059F0266460C90062FAF6 /* Info.plist */,
 			);
 			path = "Rad Wookie MoviesUITests";
+			sourceTree = "<group>";
+		};
+		2B305A0626673F0C0062FAF6 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				2B305A072667402C0062FAF6 /* Genre.swift */,
+				2B305A082667402C0062FAF6 /* Movie.swift */,
+				2B305A092667402C0062FAF6 /* Person.swift */,
+			);
+			path = Movies;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +275,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B305A0C2667402C0062FAF6 /* Person.swift in Sources */,
 				2B3059D1266460C80062FAF6 /* ViewController.swift in Sources */,
 				2B3059CD266460C80062FAF6 /* AppDelegate.swift in Sources */,
 				2B3059CF266460C80062FAF6 /* SceneDelegate.swift in Sources */,
+				2B305A0A2667402C0062FAF6 /* Genre.swift in Sources */,
+				2B305A0B2667402C0062FAF6 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
