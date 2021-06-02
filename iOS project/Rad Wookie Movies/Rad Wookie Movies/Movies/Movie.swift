@@ -15,12 +15,28 @@ struct Movie: Decodable {
     let director: Person?
     let genres: [Genre]
     let id: String?
-    let imdb_rating: Decimal?
+    let imdbRating: Decimal?
     let length: DateInterval?
     let overview: String?
     let poster: String?
-    let released_on: Date?
+    let releaseDate: Date?
     let slug: String?
     let title: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case backdrop
+        case cast
+        case classification
+        case director
+        case genres
+        case id
+        case imdbRating = "imdb_rating"
+        case length
+        case overview
+        case poster
+        case releaseDate = "released_on"
+        case slug
+        case title
+    }
     
 }
