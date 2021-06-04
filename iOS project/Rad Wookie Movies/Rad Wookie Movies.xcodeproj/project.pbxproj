@@ -119,10 +119,7 @@
 		2B3059CB266460C80062FAF6 /* Rad Wookie Movies */ = {
 			isa = PBXGroup;
 			children = (
-				2B3059D2266460C80062FAF6 /* Main.storyboard */,
-				2B32EA122669E069004B69C1 /* MovieCollectionViewController.storyboard */,
-				2B32EA102669E069004B69C1 /* MovieDetailViewController.storyboard */,
-				2B32EA142669E06A004B69C1 /* SearchViewController.storyboard */,
+				2B32EA192669E2BC004B69C1 /* Storyboards */,
 				2B305A1126692D090062FAF6 /* Views */,
 				2B305A0E266746350062FAF6 /* API */,
 				2B305A0626673F0C0062FAF6 /* Movies */,
@@ -180,6 +177,17 @@
 				2B305A16266931200062FAF6 /* MovieDetailViewController.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		2B32EA192669E2BC004B69C1 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				2B3059D2266460C80062FAF6 /* Main.storyboard */,
+				2B32EA122669E069004B69C1 /* MovieCollectionViewController.storyboard */,
+				2B32EA102669E069004B69C1 /* MovieDetailViewController.storyboard */,
+				2B32EA142669E06A004B69C1 /* SearchViewController.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
