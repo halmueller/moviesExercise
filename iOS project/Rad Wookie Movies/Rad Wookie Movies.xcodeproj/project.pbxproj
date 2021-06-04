@@ -22,6 +22,9 @@
 		2B305A1526692EC20062FAF6 /* MovieCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B305A1426692EC20062FAF6 /* MovieCollectionViewController.swift */; };
 		2B305A17266931200062FAF6 /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B305A16266931200062FAF6 /* MovieDetailViewController.swift */; };
 		2B305A19266931740062FAF6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B305A18266931740062FAF6 /* SearchViewController.swift */; };
+		2B32EA162669E06A004B69C1 /* MovieDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B32EA102669E069004B69C1 /* MovieDetailViewController.storyboard */; };
+		2B32EA172669E06A004B69C1 /* MovieCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B32EA122669E069004B69C1 /* MovieCollectionViewController.storyboard */; };
+		2B32EA182669E06A004B69C1 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B32EA142669E06A004B69C1 /* SearchViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		2B305A1426692EC20062FAF6 /* MovieCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewController.swift; sourceTree = "<group>"; };
 		2B305A16266931200062FAF6 /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		2B305A18266931740062FAF6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		2B32EA112669E069004B69C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MovieDetailViewController.storyboard; sourceTree = "<group>"; };
+		2B32EA132669E069004B69C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MovieCollectionViewController.storyboard; sourceTree = "<group>"; };
+		2B32EA152669E06A004B69C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SearchViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,9 @@
 			isa = PBXGroup;
 			children = (
 				2B3059D2266460C80062FAF6 /* Main.storyboard */,
+				2B32EA122669E069004B69C1 /* MovieCollectionViewController.storyboard */,
+				2B32EA102669E069004B69C1 /* MovieDetailViewController.storyboard */,
+				2B32EA142669E06A004B69C1 /* SearchViewController.storyboard */,
 				2B305A1126692D090062FAF6 /* Views */,
 				2B305A0E266746350062FAF6 /* API */,
 				2B305A0626673F0C0062FAF6 /* Movies */,
@@ -277,8 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B3059D9266460C90062FAF6 /* LaunchScreen.storyboard in Resources */,
+				2B32EA162669E06A004B69C1 /* MovieDetailViewController.storyboard in Resources */,
 				2B3059D6266460C90062FAF6 /* Assets.xcassets in Resources */,
+				2B32EA172669E06A004B69C1 /* MovieCollectionViewController.storyboard in Resources */,
 				2B3059D4266460C80062FAF6 /* Main.storyboard in Resources */,
+				2B32EA182669E06A004B69C1 /* SearchViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +374,30 @@
 				2B3059D8266460C90062FAF6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2B32EA102669E069004B69C1 /* MovieDetailViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B32EA112669E069004B69C1 /* Base */,
+			);
+			name = MovieDetailViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		2B32EA122669E069004B69C1 /* MovieCollectionViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B32EA132669E069004B69C1 /* Base */,
+			);
+			name = MovieCollectionViewController.storyboard;
+			sourceTree = "<group>";
+		};
+		2B32EA142669E06A004B69C1 /* SearchViewController.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B32EA152669E06A004B69C1 /* Base */,
+			);
+			name = SearchViewController.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
