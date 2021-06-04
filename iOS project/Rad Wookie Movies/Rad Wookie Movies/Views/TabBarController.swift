@@ -10,22 +10,33 @@ import UIKit
 class TabBarController: UITabBarController {
 
     let apiManager = APIManager()
+    var movieCollectionViewController: MovieCollectionViewController?
+    var searchViewController: SearchViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        var newViewControllers : [UIViewController] = []
+
+        let movieCollectionStoryboard = UIStoryboard.init(name: "MovieCollectionViewController", bundle: nil)
+        if let movieCollectionViewController = movieCollectionStoryboard.instantiateInitialViewController() as? MovieCollectionViewController {
+            movieCollectionViewController.apiManager = apiManager
+            self.movieCollectionViewController = movieCollectionViewController
+            newViewControllers.append(movieCollectionViewController)
+        }
+        
+        let searchStoryboard = UIStoryboard.init(name: "SearchViewController", bundle: nil)
+        if let searchViewController = searchStoryboard.instantiateInitialViewController() as? SearchViewController {
+            searchViewController.apiManager = apiManager
+            self.searchViewController = searchViewController
+            newViewControllers.append(searchViewController)
+        }
+
+        viewControllers = newViewControllers
+        
     }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

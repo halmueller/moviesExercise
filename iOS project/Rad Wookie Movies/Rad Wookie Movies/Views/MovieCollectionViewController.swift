@@ -11,6 +11,11 @@ private let reuseIdentifier = "Cell"
 
 class MovieCollectionViewController: UICollectionViewController {
 
+    var apiManager: APIManager?
+    
+    var movies: [Movie] = []
+    var selectedMovie: Movie?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,15 +28,13 @@ class MovieCollectionViewController: UICollectionViewController {
         // Do any additional setup after loading the view.
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if let destination = segue.destination as? MovieDetailViewController {
+            destination.movie = selectedMovie
+        }
     }
-    */
 
     // MARK: UICollectionViewDataSource
 
