@@ -9,20 +9,20 @@ import Foundation
 
 struct Movie: Codable {
     
-    let backdropURLString: String?
+    let backdropURLString: String
     let cast: [String]
-    let classification: String?
-//    let director: String?
+    let classification: String
+//    let director: String
     let genres: [Genre]
     let id: String?
-    let imdbRating: Decimal?
-    //    let length: DateInterval?
+    let imdbRating: Decimal
+    //    let length: DateInterval
     let lengthString: String
-    let overview: String?
-    let posterURLString: String?
-//    let releaseDate: Date?
-    let releaseDateString: String?
-    let slug: String?
+    let overview: String
+    let posterURLString: String
+//    let releaseDate: Date
+    let releaseDateString: String
+    let slug: String
     let title: String
     
     private enum CodingKeys: String, CodingKey {
