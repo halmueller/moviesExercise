@@ -113,10 +113,3 @@ class MovieCollectionViewController: UICollectionViewController {
 
 }
 
-extension MovieCollectionViewController: APIMovieFetchResultsDelegate {
-    
-    func apiManagerMovieFetchDidFinish(_ apiManager: APIManager, request: URLRequest, result: [Movie]?) {
-        print(#file, #function, request, result)
-    }
-    
-}
