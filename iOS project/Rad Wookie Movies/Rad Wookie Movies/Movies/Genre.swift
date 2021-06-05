@@ -7,6 +7,4 @@
 
 import Foundation
 
-struct Genre : Decodable {
-    let name: String
-}
+typealias Genre = String

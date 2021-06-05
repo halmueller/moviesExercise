@@ -7,19 +7,21 @@
 
 import Foundation
 
-struct Movie: Decodable {
+struct Movie: Codable {
     
     let backdrop: String?
-    let cast: [Person]
+    let cast: [String]
     let classification: String?
-    let director: Person?
+//    let director: String?
     let genres: [Genre]
     let id: String?
     let imdbRating: Decimal?
-    let length: DateInterval?
+    //    let length: DateInterval?
+    let lengthString: String
     let overview: String?
     let poster: String?
-    let releaseDate: Date?
+//    let releaseDate: Date?
+    let releaseDateString: String?
     let slug: String?
     let title: String?
     
@@ -27,14 +29,16 @@ struct Movie: Decodable {
         case backdrop
         case cast
         case classification
-        case director
+//        case director
         case genres
         case id
         case imdbRating = "imdb_rating"
-        case length
+//        case length
+        case lengthString = "length"
         case overview
         case poster
-        case releaseDate = "released_on"
+//        case releaseDate = "released_on"
+        case releaseDateString = "released_on"
         case slug
         case title
     }

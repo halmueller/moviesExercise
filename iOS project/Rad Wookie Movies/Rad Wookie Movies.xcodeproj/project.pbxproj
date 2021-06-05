@@ -25,6 +25,7 @@
 		2B32EA162669E06A004B69C1 /* MovieDetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B32EA102669E069004B69C1 /* MovieDetailViewController.storyboard */; };
 		2B32EA172669E06A004B69C1 /* MovieCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B32EA122669E069004B69C1 /* MovieCollectionViewController.storyboard */; };
 		2B32EA182669E06A004B69C1 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B32EA142669E06A004B69C1 /* SearchViewController.storyboard */; };
+		2BDB2373266B10AD00D5DE03 /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB2372266B10AD00D5DE03 /* Movies.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		2B32EA112669E069004B69C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MovieDetailViewController.storyboard; sourceTree = "<group>"; };
 		2B32EA132669E069004B69C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MovieCollectionViewController.storyboard; sourceTree = "<group>"; };
 		2B32EA152669E06A004B69C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SearchViewController.storyboard; sourceTree = "<group>"; };
+		2BDB2372266B10AD00D5DE03 /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 				2B305A072667402C0062FAF6 /* Genre.swift */,
 				2B305A082667402C0062FAF6 /* Movie.swift */,
 				2B305A092667402C0062FAF6 /* Person.swift */,
+				2BDB2372266B10AD00D5DE03 /* Movies.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B305A19266931740062FAF6 /* SearchViewController.swift in Sources */,
+				2BDB2373266B10AD00D5DE03 /* Movies.swift in Sources */,
 				2B305A0C2667402C0062FAF6 /* Person.swift in Sources */,
 				2B305A1526692EC20062FAF6 /* MovieCollectionViewController.swift in Sources */,
 				2B3059CD266460C80062FAF6 /* AppDelegate.swift in Sources */,
