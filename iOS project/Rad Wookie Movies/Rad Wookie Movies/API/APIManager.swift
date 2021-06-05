@@ -70,14 +70,15 @@ class APIManager : NSObject {
                 print("No data")
                 return
             }
-            print(content)
 
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .iso8601
             print(decoder.dateDecodingStrategy)
             do {
-                let movies = try decoder.decode(MoviesServerPayload.self, from: content)
-                completionHandler(movies.movies)
+                let moviesPayload = try decoder.decode(MoviesServerPayload.self, from: content)
+                DispatchQueue.main.async {
+                    completionHandler(moviesPayload.movies)
+                }
             }
             catch {
                 print("Failed to decode JSON")

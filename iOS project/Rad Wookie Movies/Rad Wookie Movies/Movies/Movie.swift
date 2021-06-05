@@ -23,7 +23,7 @@ struct Movie: Codable {
 //    let releaseDate: Date?
     let releaseDateString: String?
     let slug: String?
-    let title: String?
+    let title: String
     
     private enum CodingKeys: String, CodingKey {
         case backdropURLString = "backdrop"

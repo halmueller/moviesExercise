@@ -7,7 +7,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "MovieCell"
 
 class MovieCollectionViewController: UICollectionViewController {
 
@@ -15,21 +15,26 @@ class MovieCollectionViewController: UICollectionViewController {
     
     var movies: [Movie] = [] {
         didSet {
-            print(#function, movies.count)
+            updateGenres()
+            collectionView.reloadData()
         }
     }
+    var moviesByGenre: [Genre : [Movie]] = [:]
     var genres: [Genre] = []
     
+    func updateGenres() {
+        moviesByGenre = [:]
+        genres = Array(Set(movies.flatMap  {$0.genres})).sorted()
+        for genre in genres {
+            let matchingMovies = movies.filter( {$0.genres.contains(genre)} ).sorted(by: {$0.title < $1.title})
+            moviesByGenre[genre] = matchingMovies
+        }
+    }
+
     var selectedMovie: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         
         apiManager?.fetchMovies() { [weak self] (foundMovies) in
             if let foundMovies = foundMovies,
@@ -50,21 +55,28 @@ class MovieCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        print(genres.count)
+        return genres.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        guard let moviesInSection = moviesByGenre[genres[section]] else { return 0 }
+        return moviesInSection.count
     }
 
+    func movie(indexPath: IndexPath) -> Movie? {
+        guard let moviesInSection = moviesByGenre[genres[indexPath.section]] else { return nil }
+        let movie = moviesInSection[indexPath.row]
+        return movie
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MovieCollectionViewCell
+        cell.backgroundColor = .systemYellow
+        if let movie = movie(indexPath: indexPath) {
+            cell.title?.text = movie.title
+        }
         return cell
     }
 

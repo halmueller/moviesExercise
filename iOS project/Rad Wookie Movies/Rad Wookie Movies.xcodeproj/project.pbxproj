@@ -26,6 +26,7 @@
 		2B32EA172669E06A004B69C1 /* MovieCollectionViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B32EA122669E069004B69C1 /* MovieCollectionViewController.storyboard */; };
 		2B32EA182669E06A004B69C1 /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B32EA142669E06A004B69C1 /* SearchViewController.storyboard */; };
 		2BDB2373266B10AD00D5DE03 /* MoviesServerPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB2372266B10AD00D5DE03 /* MoviesServerPayload.swift */; };
+		2BDB2375266C328C00D5DE03 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BDB2374266C328C00D5DE03 /* MovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		2B32EA132669E069004B69C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MovieCollectionViewController.storyboard; sourceTree = "<group>"; };
 		2B32EA152669E06A004B69C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SearchViewController.storyboard; sourceTree = "<group>"; };
 		2BDB2372266B10AD00D5DE03 /* MoviesServerPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesServerPayload.swift; sourceTree = "<group>"; };
+		2BDB2374266C328C00D5DE03 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 				2B305A1226692DEA0062FAF6 /* TabBarController.swift */,
 				2B305A1426692EC20062FAF6 /* MovieCollectionViewController.swift */,
 				2B305A18266931740062FAF6 /* SearchViewController.swift */,
+				2BDB2374266C328C00D5DE03 /* MovieCollectionViewCell.swift */,
 				2B305A16266931200062FAF6 /* MovieDetailViewController.swift */,
 			);
 			path = Views;
@@ -329,6 +332,7 @@
 				2B305A19266931740062FAF6 /* SearchViewController.swift in Sources */,
 				2BDB2373266B10AD00D5DE03 /* MoviesServerPayload.swift in Sources */,
 				2B305A0C2667402C0062FAF6 /* Person.swift in Sources */,
+				2BDB2375266C328C00D5DE03 /* MovieCollectionViewCell.swift in Sources */,
 				2B305A1526692EC20062FAF6 /* MovieCollectionViewController.swift in Sources */,
 				2B3059CD266460C80062FAF6 /* AppDelegate.swift in Sources */,
 				2B3059CF266460C80062FAF6 /* SceneDelegate.swift in Sources */,
