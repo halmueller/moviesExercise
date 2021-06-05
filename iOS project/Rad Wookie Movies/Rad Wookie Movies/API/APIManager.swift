@@ -47,9 +47,9 @@ class APIManager : NSObject {
         return result
     }
     
-    func fetchMovies () {
+    func fetchMovies (completionHandler: @escaping ([Movie]?) -> Void) {
 //        let movie1 = Movie(backdrop: "backdrop", cast: ["one", "two"], classification: "abc", genres: ["a"], id: "asdf", imdbRating: 0, lengthString: "1:23", overview: "", poster: "", releaseDate: Date(), slug: "", title: "title 1")
-//        let movies = Movies(movies: [movie1])
+//        let movies = MoviesServerPayload(movies: [movie1])
 //        let encoder = JSONEncoder()
 //        encoder.dateEncodingStrategy = .iso8601
 //        do {
@@ -76,9 +76,8 @@ class APIManager : NSObject {
             decoder.dateDecodingStrategy = .iso8601
             print(decoder.dateDecodingStrategy)
             do {
-                let movies = try decoder.decode(Movies.self, from: content)
-                print(movies)
-                print(#function, "found", movies.movies.count, "entries")
+                let movies = try decoder.decode(MoviesServerPayload.self, from: content)
+                completionHandler(movies.movies)
             }
             catch {
                 print("Failed to decode JSON")

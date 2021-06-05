@@ -9,7 +9,7 @@ import Foundation
 
 struct Movie: Codable {
     
-    let backdrop: String?
+    let backdropURLString: String?
     let cast: [String]
     let classification: String?
 //    let director: String?
@@ -19,14 +19,14 @@ struct Movie: Codable {
     //    let length: DateInterval?
     let lengthString: String
     let overview: String?
-    let poster: String?
+    let posterURLString: String?
 //    let releaseDate: Date?
     let releaseDateString: String?
     let slug: String?
     let title: String?
     
     private enum CodingKeys: String, CodingKey {
-        case backdrop
+        case backdropURLString = "backdrop"
         case cast
         case classification
 //        case director
@@ -36,7 +36,7 @@ struct Movie: Codable {
 //        case length
         case lengthString = "length"
         case overview
-        case poster
+        case posterURLString = "poster"
 //        case releaseDate = "released_on"
         case releaseDateString = "released_on"
         case slug

@@ -13,19 +13,30 @@ class MovieCollectionViewController: UICollectionViewController {
 
     var apiManager: APIManager?
     
-    var movies: [Movie] = []
+    var movies: [Movie] = [] {
+        didSet {
+            print(#function, movies.count)
+        }
+    }
+    var genres: [Genre] = []
+    
     var selectedMovie: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Register cell classes
         self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        apiManager?.fetchMovies()
+        
+        apiManager?.fetchMovies() { [weak self] (foundMovies) in
+            if let foundMovies = foundMovies,
+               let self = self {
+                self.movies = foundMovies
+            }
+        }
     }
 
     // MARK: - Navigation
