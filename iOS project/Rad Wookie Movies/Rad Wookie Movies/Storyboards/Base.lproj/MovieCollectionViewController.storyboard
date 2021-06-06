@@ -88,10 +88,21 @@
                         </connections>
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Home" id="d5H-gp-Ey5"/>
+                    <connections>
+                        <segue destination="e20-gY-Snl" kind="presentation" identifier="showMovieDetail" id="0dl-nQ-iaq"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1pm-5i-4c3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="469.56521739130437" y="-378.34821428571428"/>
+        </scene>
+        <!--MovieDetailViewController-->
+        <scene sceneID="GPo-Ng-daQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MovieDetailViewController" id="e20-gY-Snl" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FuP-s4-Nat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1128" y="-260"/>
         </scene>
     </scenes>
     <resources>

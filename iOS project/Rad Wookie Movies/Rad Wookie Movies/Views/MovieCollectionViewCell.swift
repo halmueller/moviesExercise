@@ -15,7 +15,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     func load(_ movie: Movie) {
 
         title?.text = movie.title
-        poster?.image = UIImage(systemName: "film", withConfiguration: UIImage.SymbolConfiguration(scale: .large))
+        poster?.image = UIImage(systemName: Movie.posterPlaceholderName, withConfiguration: UIImage.SymbolConfiguration(scale: .large))
         
         // from inspection: most images are 342x513. Some are 488 or 507 pixels tall. 342 seems to be constant width.
         if let posterUrl = URL(string: movie.posterURLString) {

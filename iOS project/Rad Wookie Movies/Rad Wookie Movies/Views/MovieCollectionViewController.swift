@@ -62,6 +62,7 @@ class MovieCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? MovieDetailViewController {
             destination.movie = selectedMovie
+            destination.apiManager = apiManager
         }
     }
 
@@ -102,12 +103,16 @@ class MovieCollectionViewController: UICollectionViewController {
     }
     */
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        print(#function, indexPath)
         return true
     }
-    */
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function, indexPath)
+        selectedMovie = movie(indexPath: indexPath)
+        performSegue(withIdentifier: "showMovieDetail", sender: self)
+    }
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item

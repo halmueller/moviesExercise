@@ -25,6 +25,8 @@ struct Movie: Codable {
     let slug: String
     let title: String
     
+    static let posterPlaceholderName = "film"
+    
     private enum CodingKeys: String, CodingKey {
         case backdropURLString = "backdrop"
         case cast
