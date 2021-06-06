@@ -16,6 +16,14 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var poster: UIImageView!
     @IBOutlet weak var backdrop: UIImageView!
     
+    
+    @IBOutlet var ratingStars: [UIImageView]?
+    @IBOutlet var star1: UIImageView?
+    @IBOutlet var star2: UIImageView?
+    @IBOutlet var star3: UIImageView?
+    @IBOutlet var star4: UIImageView?
+    @IBOutlet var star5: UIImageView?
+
     @IBOutlet weak var titleLabel: UILabel?
     @IBOutlet weak var lengthLabel: UILabel?
     @IBOutlet weak var directorsLabel: UILabel?
@@ -36,6 +44,7 @@ class MovieDetailViewController: UIViewController {
             yearLabel?.text = movie.releaseDateString
             castLabel?.text = "cast:" + movie.cast.joined(separator: ", ")
             movieOverviewTextView?.text = movie.overview
+            configureRatingStars()
             
             poster?.image = UIImage(systemName: Movie.posterPlaceholderName, withConfiguration: UIImage.SymbolConfiguration(scale: .large))
 
@@ -56,6 +65,38 @@ class MovieDetailViewController: UIViewController {
             }
 
             
+        }
+    }
+    
+    func configureRatingStars() {
+        if let ratingStars = ratingStars {
+            let filledStar = UIImage(systemName: "star.fill")
+            let openStar = UIImage(systemName: "star")
+            let partialStar = UIImage(systemName: "star.leadinghalf.fill")
+            for star in ratingStars {
+                star.image = filledStar
+            }
+            if let movie = movie {
+                // IMDB scores 0-10, but we show 1-5 stars
+                let stars = movie.imdbRating / 2
+                let fullStars = stars.rounded(.down)
+                print(movie.title, movie.imdbRating, fullStars, stars)
+                if fullStars < 5 {
+                    star5?.image = stars > 4 ? partialStar : openStar
+                }
+                if fullStars < 4 {
+                    star4?.image = stars > 3 ? partialStar : openStar
+                }
+                if fullStars < 3 {
+                    star3?.image = stars > 2 ? partialStar : openStar
+                }
+                if fullStars < 2 {
+                    star2?.image = stars > 1 ? partialStar : openStar
+                }
+                if fullStars < 1 {
+                    star1?.image = stars > 0 ? partialStar : openStar
+                }
+            }
         }
     }
 

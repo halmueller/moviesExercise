@@ -14,8 +14,8 @@ struct Movie: Codable {
     let classification: String
 //    let director: String
     let genres: [Genre]
-    let id: String?
-    let imdbRating: Decimal
+    let id: String
+    let imdbRating: Double
     //    let length: DateInterval
     let lengthString: String
     let overview: String

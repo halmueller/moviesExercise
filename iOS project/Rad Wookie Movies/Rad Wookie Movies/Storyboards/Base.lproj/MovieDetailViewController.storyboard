@@ -88,6 +88,29 @@
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TtQ-mp-2Lb">
+                                <rect key="frame" x="218" y="346" width="142" height="44"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="H5t-Zv-k4u">
+                                        <rect key="frame" x="0.0" y="11.5" width="22" height="20"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Nsr-9V-F2n">
+                                        <rect key="frame" x="30" y="11.5" width="22" height="20"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3Wp-l7-yyr">
+                                        <rect key="frame" x="60" y="11.5" width="22" height="20"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="xUc-k2-6Gu">
+                                        <rect key="frame" x="90" y="11.5" width="22" height="20"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jdS-jr-6iy">
+                                        <rect key="frame" x="120" y="11.5" width="22" height="20"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="UfB-bd-eCU"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="944-dg-Xeh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -101,6 +124,8 @@
                             <constraint firstItem="Y7J-Yf-qO8" firstAttribute="leading" secondItem="944-dg-Xeh" secondAttribute="leading" constant="20" id="Yqr-6X-QGq"/>
                             <constraint firstItem="cCP-bK-9Gb" firstAttribute="leading" secondItem="Y7J-Yf-qO8" secondAttribute="trailing" constant="8" symbolic="YES" id="aF3-49-zmr"/>
                             <constraint firstItem="944-dg-Xeh" firstAttribute="trailing" secondItem="cCP-bK-9Gb" secondAttribute="trailing" constant="16" id="aJp-fJ-o87"/>
+                            <constraint firstItem="TtQ-mp-2Lb" firstAttribute="leading" secondItem="Y7J-Yf-qO8" secondAttribute="trailing" constant="8" symbolic="YES" id="aku-Tv-e1X"/>
+                            <constraint firstItem="TtQ-mp-2Lb" firstAttribute="bottom" secondItem="Y7J-Yf-qO8" secondAttribute="bottom" id="asZ-IX-Hev"/>
                             <constraint firstItem="8He-n3-fGD" firstAttribute="top" secondItem="1e5-oj-OzW" secondAttribute="bottom" constant="27.5" id="bfo-c2-jNF"/>
                             <constraint firstItem="dl6-bQ-U4I" firstAttribute="leading" secondItem="944-dg-Xeh" secondAttribute="leading" id="cyu-PN-N9L"/>
                             <constraint firstItem="d8a-l8-bqX" firstAttribute="top" secondItem="Y7J-Yf-qO8" secondAttribute="bottom" constant="32" id="efu-c3-KQm"/>
@@ -119,8 +144,18 @@
                         <outlet property="lengthLabel" destination="i6r-Gc-Hg3" id="9yO-Wb-nar"/>
                         <outlet property="movieOverviewTextView" destination="8He-n3-fGD" id="YtC-Bg-5fB"/>
                         <outlet property="poster" destination="Y7J-Yf-qO8" id="XtN-0e-S9m"/>
+                        <outlet property="star1" destination="H5t-Zv-k4u" id="UYb-OD-NR9"/>
+                        <outlet property="star2" destination="Nsr-9V-F2n" id="ptx-6q-ZEK"/>
+                        <outlet property="star3" destination="3Wp-l7-yyr" id="dgp-QY-NIT"/>
+                        <outlet property="star4" destination="xUc-k2-6Gu" id="cJN-iM-FTs"/>
+                        <outlet property="star5" destination="jdS-jr-6iy" id="Db2-dq-ML1"/>
                         <outlet property="titleLabel" destination="cCP-bK-9Gb" id="v8b-Db-HvQ"/>
                         <outlet property="yearLabel" destination="YBe-Me-5XB" id="R3G-HA-iin"/>
+                        <outletCollection property="ratingStars" destination="H5t-Zv-k4u" collectionClass="NSMutableArray" id="pYn-SS-WDd"/>
+                        <outletCollection property="ratingStars" destination="Nsr-9V-F2n" collectionClass="NSMutableArray" id="kDw-i1-2uK"/>
+                        <outletCollection property="ratingStars" destination="3Wp-l7-yyr" collectionClass="NSMutableArray" id="zRe-BP-UbR"/>
+                        <outletCollection property="ratingStars" destination="xUc-k2-6Gu" collectionClass="NSMutableArray" id="n1c-Ig-AlO"/>
+                        <outletCollection property="ratingStars" destination="jdS-jr-6iy" collectionClass="NSMutableArray" id="1fa-Fy-ZeJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1JO-SB-x1K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -129,6 +164,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
