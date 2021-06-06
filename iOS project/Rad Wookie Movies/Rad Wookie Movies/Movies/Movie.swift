@@ -11,7 +11,7 @@ struct Movie: Codable {
     
     let backdropURLString: String
     let cast: [String]
-    let classification: String
+    let mpaaRating: String
 //    let director: String
     let genres: [Genre]
     let id: String
@@ -30,7 +30,7 @@ struct Movie: Codable {
     private enum CodingKeys: String, CodingKey {
         case backdropURLString = "backdrop"
         case cast
-        case classification
+        case mpaaRating = "classification"
 //        case director
         case genres
         case id

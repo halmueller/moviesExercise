@@ -17,7 +17,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var backdrop: UIImageView!
     
     
-    @IBOutlet var ratingStars: [UIImageView]?
+    @IBOutlet var ratingStarViews: [UIImageView]?
     @IBOutlet var star1: UIImageView?
     @IBOutlet var star2: UIImageView?
     @IBOutlet var star3: UIImageView?
@@ -39,7 +39,7 @@ class MovieDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let movie = movie {
             print(movie.title)
-            titleLabel?.text = movie.title
+            titleLabel?.text = movie.title + "(" + movie.mpaaRating + ")"
             lengthLabel?.text = movie.lengthString
             yearLabel?.text = movie.releaseDateString
             castLabel?.text = "cast:" + movie.cast.joined(separator: ", ")
@@ -69,12 +69,13 @@ class MovieDetailViewController: UIViewController {
     }
     
     func configureRatingStars() {
-        if let ratingStars = ratingStars {
+        if let ratingStarViews = ratingStarViews {
             let filledStar = UIImage(systemName: "star.fill")
             let openStar = UIImage(systemName: "star")
             let partialStar = UIImage(systemName: "star.leadinghalf.fill")
-            for star in ratingStars {
-                star.image = filledStar
+            for starView in ratingStarViews {
+                starView.image = filledStar
+                starView.tintColor = .systemYellow
             }
             if let movie = movie {
                 // IMDB scores 0-10, but we show 1-5 stars

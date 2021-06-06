@@ -38,7 +38,7 @@ class APIManager : NSObject {
     }
     
     func fetchMovies (completionHandler: @escaping ([Movie]?) -> Void) {
-//        let movie1 = Movie(backdrop: "backdrop", cast: ["one", "two"], classification: "abc", genres: ["a"], id: "asdf", imdbRating: 0, lengthString: "1:23", overview: "", poster: "", releaseDate: Date(), slug: "", title: "title 1")
+//        let movie1 = Movie(backdrop: "backdrop", cast: ["one", "two"], mpaaRating: "abc", genres: ["a"], id: "asdf", imdbRating: 0, lengthString: "1:23", overview: "", poster: "", releaseDate: Date(), slug: "", title: "title 1")
 //        let movies = MoviesServerPayload(movies: [movie1])
 //        let encoder = JSONEncoder()
 //        encoder.dateEncodingStrategy = .iso8601

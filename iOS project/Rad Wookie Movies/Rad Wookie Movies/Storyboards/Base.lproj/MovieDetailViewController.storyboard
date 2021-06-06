@@ -151,11 +151,11 @@
                         <outlet property="star5" destination="jdS-jr-6iy" id="Db2-dq-ML1"/>
                         <outlet property="titleLabel" destination="cCP-bK-9Gb" id="v8b-Db-HvQ"/>
                         <outlet property="yearLabel" destination="YBe-Me-5XB" id="R3G-HA-iin"/>
-                        <outletCollection property="ratingStars" destination="H5t-Zv-k4u" collectionClass="NSMutableArray" id="pYn-SS-WDd"/>
-                        <outletCollection property="ratingStars" destination="Nsr-9V-F2n" collectionClass="NSMutableArray" id="kDw-i1-2uK"/>
-                        <outletCollection property="ratingStars" destination="3Wp-l7-yyr" collectionClass="NSMutableArray" id="zRe-BP-UbR"/>
-                        <outletCollection property="ratingStars" destination="xUc-k2-6Gu" collectionClass="NSMutableArray" id="n1c-Ig-AlO"/>
-                        <outletCollection property="ratingStars" destination="jdS-jr-6iy" collectionClass="NSMutableArray" id="1fa-Fy-ZeJ"/>
+                        <outletCollection property="ratingStarViews" destination="H5t-Zv-k4u" collectionClass="NSMutableArray" id="pYn-SS-WDd"/>
+                        <outletCollection property="ratingStarViews" destination="Nsr-9V-F2n" collectionClass="NSMutableArray" id="kDw-i1-2uK"/>
+                        <outletCollection property="ratingStarViews" destination="3Wp-l7-yyr" collectionClass="NSMutableArray" id="zRe-BP-UbR"/>
+                        <outletCollection property="ratingStarViews" destination="xUc-k2-6Gu" collectionClass="NSMutableArray" id="n1c-Ig-AlO"/>
+                        <outletCollection property="ratingStarViews" destination="jdS-jr-6iy" collectionClass="NSMutableArray" id="1fa-Fy-ZeJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1JO-SB-x1K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
