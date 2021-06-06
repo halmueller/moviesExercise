@@ -8,6 +8,7 @@
 import UIKit
 
 private let reuseIdentifier = "MovieCell"
+private let headerReuseIdentifier = "header"
 
 class MovieCollectionViewController: UICollectionViewController {
 
@@ -44,6 +45,18 @@ class MovieCollectionViewController: UICollectionViewController {
         }
     }
 
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! MovieCollectionViewHeader
+            header.genreLabel.text = genres[indexPath.section]
+            return header
+        default:
+            print(#function, "fell through")
+            return UICollectionReusableView()
+        }
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
