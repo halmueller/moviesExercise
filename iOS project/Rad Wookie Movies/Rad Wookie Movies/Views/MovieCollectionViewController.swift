@@ -10,7 +10,7 @@ import UIKit
 private let reuseIdentifier = "MovieCell"
 private let headerReuseIdentifier = "header"
 
-class MovieCollectionViewController: UICollectionViewController {
+class MovieCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     var apiManager: APIManager?
     
@@ -37,6 +37,10 @@ class MovieCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            configureFlowLayout(layout)
+        }
+        
         apiManager?.fetchMovies() { [weak self] (foundMovies) in
             if let foundMovies = foundMovies,
                let self = self {
@@ -44,6 +48,26 @@ class MovieCollectionViewController: UICollectionViewController {
             }
         }
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
+    }
+
+    func configureFlowLayout(_ flowLayout: UICollectionViewFlowLayout) {
+        flowLayout.sectionHeadersPinToVisibleBounds = true
+    }
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MovieDetailViewController {
+            destination.movie = selectedMovie
+            destination.apiManager = apiManager
+        }
+    }
+
+    // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
@@ -57,17 +81,6 @@ class MovieCollectionViewController: UICollectionViewController {
         }
     }
     
-    // MARK: - Navigation
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? MovieDetailViewController {
-            destination.movie = selectedMovie
-            destination.apiManager = apiManager
-        }
-    }
-
-    // MARK: UICollectionViewDataSource
-
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         print(genres.count)
         return genres.count
@@ -94,7 +107,7 @@ class MovieCollectionViewController: UICollectionViewController {
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: - UICollectionViewDelegate
 
     /*
     // Uncomment this method to specify if the specified item should be highlighted during tracking
@@ -129,5 +142,10 @@ class MovieCollectionViewController: UICollectionViewController {
     }
     */
 
+    // MARK: - UICollectionViewDelegateFlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 300, height: 600)
+    }
 }
 
