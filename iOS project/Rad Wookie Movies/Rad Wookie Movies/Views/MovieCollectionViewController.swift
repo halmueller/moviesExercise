@@ -73,9 +73,9 @@ class MovieCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! MovieCollectionViewCell
-        cell.backgroundColor = .systemYellow
         if let movie = movie(indexPath: indexPath) {
-            cell.title?.text = movie.title
+            cell.apiManager = apiManager
+            cell.load(movie)
         }
         return cell
     }

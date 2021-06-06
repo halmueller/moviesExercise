@@ -53,11 +53,11 @@ class APIManager : NSObject {
 
         let task = urlSession.dataTask(with: moviesListURL()) {(data, response, error ) in
             guard error == nil else {
-                print("guard returned error", error as Any)
+                print(#function, "returned error", error as Any)
                 return
             }
             guard let content = data else {
-                print("No data")
+                print(#function, "No data")
                 return
             }
 
@@ -71,7 +71,7 @@ class APIManager : NSObject {
                 }
             }
             catch {
-                print("Failed to decode JSON")
+                print(#function, "Failed to decode JSON")
                 print(error)
             }
   
@@ -80,6 +80,24 @@ class APIManager : NSObject {
        task.resume()
     }
         
+    func fetchImage (url: URL, completionHandler: @escaping (UIImage?) -> Void) {
+        let task = urlSession.dataTask(with: url)  {(data, response, error ) in
+            guard error == nil else {
+                print(#function, "returned error", error as Any)
+                return
+            }
+            guard let content = data else {
+                print(#function, "No data")
+                return
+            }
+            let image = UIImage(data: content)
+            DispatchQueue.main.async {
+                completionHandler(image)
+            }
+        }
+        task.resume()
+    }
+    
     func moviesListRequest () -> URLRequest {
         let result = URLRequest(url: moviesListURL())
         
