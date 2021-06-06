@@ -22,6 +22,9 @@ class TabBarController: UITabBarController {
         if let movieCollectionViewController = movieCollectionStoryboard.instantiateInitialViewController() as? MovieCollectionViewController {
             movieCollectionViewController.apiManager = apiManager
             self.movieCollectionViewController = movieCollectionViewController
+            if let homeImage = UIImage.init(systemName: "house.fill") {
+                movieCollectionViewController.tabBarItem = UITabBarItem(title: "Home", image: homeImage, selectedImage: homeImage)
+            }
             newViewControllers.append(movieCollectionViewController)
         }
         
@@ -29,6 +32,9 @@ class TabBarController: UITabBarController {
         if let searchViewController = searchStoryboard.instantiateInitialViewController() as? SearchViewController {
             searchViewController.apiManager = apiManager
             self.searchViewController = searchViewController
+            if let searchImage = UIImage.init(systemName: "magnifyingglass") {
+                searchViewController.tabBarItem = UITabBarItem(title: "Search", image: searchImage, selectedImage: searchImage)
+            }
             newViewControllers.append(searchViewController)
         }
 
