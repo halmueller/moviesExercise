@@ -32,7 +32,6 @@
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spider-man: Into the Spiderverse" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iHy-Nz-xtM">
                                             <rect key="frame" x="4.5" y="8" width="112" height="51"/>
-                                            <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="112" id="aSm-cU-txi"/>
                                                 <constraint firstAttribute="height" constant="51" id="eKt-wX-d8K"/>
@@ -42,8 +41,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="w0P-84-vcs">
-                                            <rect key="frame" x="5" y="67" width="112" height="151"/>
-                                            <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                            <rect key="frame" x="4.5" y="67" width="112" height="151"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="112" id="Th8-an-4hg"/>
                                                 <constraint firstAttribute="height" constant="151" id="fbx-Jg-R3i"/>
@@ -57,7 +55,7 @@
                                         <constraint firstItem="w0P-84-vcs" firstAttribute="bottom" secondItem="bYT-fm-YsX" secondAttribute="bottomMargin" id="wBI-9M-Buo"/>
                                     </constraints>
                                 </collectionViewCellContentView>
-                                <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <size key="customSize" width="121" height="226"/>
                                 <connections>
                                     <outlet property="poster" destination="w0P-84-vcs" id="rb3-Pa-JPk"/>
@@ -117,11 +115,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
