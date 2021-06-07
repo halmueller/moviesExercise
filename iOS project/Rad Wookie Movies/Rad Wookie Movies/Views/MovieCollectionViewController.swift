@@ -77,6 +77,10 @@ class MovieCollectionViewController: UICollectionViewController, UICollectionVie
         case UICollectionView.elementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerReuseIdentifier, for: indexPath) as! MovieCollectionViewHeader
             header.genreLabel.text = genres[indexPath.section]
+            header.accessibilityLabel = header.genreLabel.text
+            header.accessibilityHint = "Genre"
+            header.isAccessibilityElement = true
+            header.shouldGroupAccessibilityChildren = true
             return header
         default:
             print(#function, "fell through")

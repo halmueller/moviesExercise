@@ -20,6 +20,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
         
         isAccessibilityElement = true
         accessibilityLabel = movie.title
+        accessibilityHint = "Movie"
         poster?.isAccessibilityElement = false
         title?.isAccessibilityElement = false
         
