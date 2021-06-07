@@ -20,8 +20,8 @@ struct Movie: Codable {
     let lengthString: String
     let overview: String
     let posterURLString: String
-//    let releaseDate: Date
-    let releaseDateString: String
+    let releaseDate: Date
+    let releaseDateString: String = "xyzzy"
     let slug: String
     let title: String
     
@@ -39,10 +39,17 @@ struct Movie: Codable {
         case lengthString = "length"
         case overview
         case posterURLString = "poster"
-//        case releaseDate = "released_on"
-        case releaseDateString = "released_on"
+        case releaseDate = "released_on"
+//        case releaseDateString = "released_on"
         case slug
         case title
     }
     
+    func releaseYearString() -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .none
+        formatter.setLocalizedDateFormatFromTemplate("yyyy")
+        let result = formatter.string(from: releaseDate)
+        return result
+    }
 }

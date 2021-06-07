@@ -17,7 +17,14 @@ class APIManager : NSObject {
     
     private let searchQueryKey = "q"
     
-    let decoder = JSONDecoder()
+    private let decoder = JSONDecoder()
+    
+    private lazy var movieDateFormatter : DateFormatter = {
+        let formatter = DateFormatter()
+        // omit the trailing Z for UTC timezone because that's what the server sends us.
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        return formatter
+    }()
     
     override init() {
         decoder.dateDecodingStrategy = .iso8601
@@ -63,6 +70,7 @@ class APIManager : NSObject {
                 guard let self = self else { return }
                 
                 do {
+                    self.decoder.dateDecodingStrategy = .formatted(self.movieDateFormatter)
                     let moviesPayload = try self.decoder.decode(MoviesServerPayload.self, from: content)
                     DispatchQueue.main.async {
                         completionHandler(moviesPayload.movies)
@@ -97,6 +105,7 @@ class APIManager : NSObject {
             guard let self = self else { return }
             
             do {
+                self.decoder.dateDecodingStrategy = .formatted(self.movieDateFormatter)
                 let moviesPayload = try self.decoder.decode(MoviesServerPayload.self, from: content)
                 DispatchQueue.main.async {
                     completionHandler(moviesPayload.movies)

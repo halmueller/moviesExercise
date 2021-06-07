@@ -42,7 +42,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating, UISe
 
         let movie = foundMovies[indexPath.row]
         cell.textLabel?.text = movie.title + " (" + movie.mpaaRating + ")"
-        cell.detailTextLabel?.text = movie.releaseDateString + " " + "director" + "."
+        cell.detailTextLabel?.text = movie.releaseYearString() + " " + "director" + "."
         cell.isAccessibilityElement = true
         cell.accessibilityLabel = movie.title
         cell.accessibilityHint = "movie"
