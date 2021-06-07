@@ -2,87 +2,86 @@
 //  SearchViewController.swift
 //  Rad Wookie Movies
 //
-//  Created by Hal Mueller on 6/3/21.
+//  Created by Hal Mueller on 6/6/21.
 //
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+class SearchViewController: UITableViewController, UISearchResultsUpdating {
 
-class SearchViewController: MovieCollectionViewController {
+    var apiManager: APIManager?
+    var foundMovies: [Movie] = [] {
+        didSet {
+            print(#function, foundMovies.count, tableView)
+            tableView.reloadData()
+        }
+    }
 
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    var selectedMovie: Movie?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        configureSearch()
+        
     }
 
-    /*
-    // MARK: - Navigation
+    // MARK: - Table view data source
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
     }
 
-
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return foundMovies.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "movie", for: indexPath)
+
+        cell.textLabel?.text = foundMovies[indexPath.row].title
+
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: - Navigation
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? MovieDetailViewController {
+            destination.movie = selectedMovie
+            destination.apiManager = apiManager
+        }
     }
 
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function, indexPath)
+        selectedMovie = foundMovies[indexPath.row]
+        
+        performSegue(withIdentifier: "showMovieDetail", sender: self)
     }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    // MARK: - search bar
+    
+    func configureSearch() {
+        searchController.searchResultsUpdater = self
+        searchController.searchBar.placeholder = "Search for a movie title or description"
+        searchController.searchBar.showsSearchResultsButton = true
+        tableView.addSubview(searchController.searchBar)
     }
-    */
 
+    // MARK: - UISearchResultsUpdating
+    func updateSearchResults(for searchController: UISearchController) {
+        print(#function, searchController.searchBar.text)
+        if let searchText = searchController.searchBar.text {
+            apiManager?.fetchMoviesForTitleQuery(searchText) { [weak self] (foundMovies) in
+                if let foundMovies = foundMovies,
+                   let self = self {
+                    self.foundMovies = foundMovies.sorted(by: {$0.title < $1.title})
+                }
+            }
+        }
+    }
+    
 }

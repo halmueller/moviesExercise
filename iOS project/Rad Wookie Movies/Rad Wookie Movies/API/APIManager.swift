@@ -17,10 +17,17 @@ class APIManager : NSObject {
     
     private let searchQueryKey = "q"
     
+    let decoder = JSONDecoder()
+    
+    override init() {
+        decoder.dateDecodingStrategy = .iso8601
+        super.init()
+    }
+
     private lazy var urlSession : URLSession = {
         let config = URLSessionConfiguration.default
         
-        // Quinn said this was ok: https://developer.apple.com/forums/thread/89811
+        // Per documentation, we're not allowed to insert an authentication header. But Quinn said this was ok: https://developer.apple.com/forums/thread/89811
         config.httpAdditionalHeaders = authenticationHeaderDict
         
         let result = URLSession(configuration: config, delegate: nil, delegateQueue: nil)
@@ -32,26 +39,52 @@ class APIManager : NSObject {
         return result
     }
     
-    private func moviesListURL1 () -> URL {
-        let result = URL(string: "\(baseURLString)/movies")!
-        return result
+    private func moviesQueryURL (_ searchText: String) -> URL? {
+        if let encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+            let urlString = "\(baseURLString)/movies?q=\(encodedSearchText))"
+            let result = URL(string: urlString)!
+            return result
+        }
+        return nil
     }
-    
+
+    func fetchMoviesForTitleQuery(_ searchText: String, completionHandler: @escaping ([Movie]?) -> Void) {
+        if let queryURL = moviesQueryURL(searchText) {
+            let task = urlSession.dataTask(with: queryURL) { [weak self] (data, response, error ) in
+                guard error == nil else {
+                    print(#function, "returned error", error as Any)
+                    return
+                }
+                guard let content = data else {
+                    print(#function, "No data")
+                    return
+                }
+                
+                guard let self = self else { return }
+                
+                do {
+                    let moviesPayload = try self.decoder.decode(MoviesServerPayload.self, from: content)
+                    DispatchQueue.main.async {
+                        completionHandler(moviesPayload.movies)
+                    }
+                }
+                catch {
+                    print(#function, "Failed to decode JSON")
+                    print(error)
+                }
+                
+            }
+            
+            task.resume()
+        }
+        else {
+            let emptyMovies = [Movie]()
+            completionHandler(emptyMovies)
+        }
+    }
     func fetchMovies (completionHandler: @escaping ([Movie]?) -> Void) {
-//        let movie1 = Movie(backdrop: "backdrop", cast: ["one", "two"], mpaaRating: "abc", genres: ["a"], id: "asdf", imdbRating: 0, lengthString: "1:23", overview: "", poster: "", releaseDate: Date(), slug: "", title: "title 1")
-//        let movies = MoviesServerPayload(movies: [movie1])
-//        let encoder = JSONEncoder()
-//        encoder.dateEncodingStrategy = .iso8601
-//        do {
-//            let json = try encoder.encode(movies)
-//            print(String(data: json, encoding: .utf8))
-//        } catch {
-//            print(error)
-//        }
-        
 
-
-        let task = urlSession.dataTask(with: moviesListURL()) {(data, response, error ) in
+        let task = urlSession.dataTask(with: moviesListURL()) { [weak self] (data, response, error ) in
             guard error == nil else {
                 print(#function, "returned error", error as Any)
                 return
@@ -61,11 +94,10 @@ class APIManager : NSObject {
                 return
             }
 
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .iso8601
-            print(decoder.dateDecodingStrategy)
+            guard let self = self else { return }
+            
             do {
-                let moviesPayload = try decoder.decode(MoviesServerPayload.self, from: content)
+                let moviesPayload = try self.decoder.decode(MoviesServerPayload.self, from: content)
                 DispatchQueue.main.async {
                     completionHandler(moviesPayload.movies)
                 }

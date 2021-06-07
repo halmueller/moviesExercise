@@ -39,6 +39,7 @@ class TabBarController: UITabBarController {
         }
 
         viewControllers = newViewControllers
+        selectedIndex = 1
         
     }
     
