@@ -35,7 +35,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="Zuq-Tc-Kp0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -144,6 +144,7 @@
                         <outlet property="lengthLabel" destination="i6r-Gc-Hg3" id="9yO-Wb-nar"/>
                         <outlet property="movieOverviewTextView" destination="8He-n3-fGD" id="YtC-Bg-5fB"/>
                         <outlet property="poster" destination="Y7J-Yf-qO8" id="XtN-0e-S9m"/>
+                        <outlet property="ratingStarStackview" destination="TtQ-mp-2Lb" id="snS-ke-nXZ"/>
                         <outlet property="star1" destination="H5t-Zv-k4u" id="UYb-OD-NR9"/>
                         <outlet property="star2" destination="Nsr-9V-F2n" id="ptx-6q-ZEK"/>
                         <outlet property="star3" destination="3Wp-l7-yyr" id="dgp-QY-NIT"/>

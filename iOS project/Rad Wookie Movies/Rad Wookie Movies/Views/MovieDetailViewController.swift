@@ -18,6 +18,7 @@ class MovieDetailViewController: UIViewController {
     
     
     @IBOutlet var ratingStarViews: [UIImageView]?
+    @IBOutlet weak var ratingStarStackview: UIStackView!
     @IBOutlet var star1: UIImageView?
     @IBOutlet var star2: UIImageView?
     @IBOutlet var star3: UIImageView?
@@ -33,7 +34,6 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,14 +41,20 @@ class MovieDetailViewController: UIViewController {
             print(movie.title)
             titleLabel?.text = movie.title + "(" + movie.mpaaRating + ")"
             lengthLabel?.text = movie.lengthString
+            lengthLabel?.accessibilityLabel = "Running time \(movie.lengthString)"
             yearLabel?.text = movie.releaseDateString
-            castLabel?.text = "cast:" + movie.cast.joined(separator: ", ")
+            yearLabel?.accessibilityLabel = "Released \(movie.lengthString)"
+            directorsLabel?.text = "directors"
+            directorsLabel?.accessibilityLabel = "Directed by directors"
+            castLabel?.text = "cast: " + movie.cast.joined(separator: ", ") + "."
             movieOverviewTextView?.text = movie.overview
             configureRatingStars()
             
             poster?.image = UIImage(systemName: Movie.posterPlaceholderName, withConfiguration: UIImage.SymbolConfiguration(scale: .large))
 
             if let backdropUrl = URL(string: movie.backdropURLString) {
+                backdrop?.accessibilityLabel = "backdrop"
+                backdrop?.isAccessibilityElement = true
                 apiManager?.fetchImage(url: backdropUrl) { [weak self] (fetchedImage) in
                     if let self = self {
                         self.backdrop?.image = fetchedImage
@@ -57,6 +63,8 @@ class MovieDetailViewController: UIViewController {
             }
             
             if let posterUrl = URL(string: movie.posterURLString) {
+                poster?.accessibilityLabel = "poster"
+                poster?.isAccessibilityElement = true
                 apiManager?.fetchImage(url: posterUrl) { [weak self] (fetchedImage) in
                     if let self = self {
                         self.poster?.image = fetchedImage
@@ -78,6 +86,9 @@ class MovieDetailViewController: UIViewController {
                 starView.tintColor = .systemYellow
             }
             if let movie = movie {
+                ratingStarStackview.accessibilityLabel = "IMDB rating \(movie.imdbRating)"
+                ratingStarStackview.isAccessibilityElement = true
+                        
                 // IMDB scores 0-10, but we show 1-5 stars
                 let stars = movie.imdbRating / 2
                 let fullStars = stars.rounded(.down)
