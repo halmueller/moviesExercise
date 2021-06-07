@@ -170,28 +170,3 @@ class APIManager : NSObject {
     }
     
 }
-
-extension APIManager: URLSessionDelegate {
-    
-    func urlSession(_ session: URLSession, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        print(#function, session, challenge)
-        print(challenge.proposedCredential)
-        print(challenge.protectionSpace)
-        print(challenge.protectionSpace.authenticationMethod)
-//        let credential = URLCredential(trust: SecTrust(authenticationHeaderString: "Bearer Wookie2019"))
-    }
-}
-
-extension APIManager: URLSessionTaskDelegate {
-    
-    func urlSession(_ session: URLSession,
-                    task: URLSessionTask,
-                    didReceive challenge: URLAuthenticationChallenge,
-                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?)  -> Void) {
-        //
-        //        func urlSession(_ session: URLSession, task: USURLSe didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        print(#function, session, challenge)
-        print(challenge.proposedCredential)
-    }
-    
-}
