@@ -7,6 +7,4 @@
 
 import Foundation
 
-struct Person : Codable {
-    let name: String
-}
+typealias Person = String

@@ -10,18 +10,18 @@ import Foundation
 struct Movie: Codable {
     
     let backdropURLString: String
-    let cast: [String]
+    let cast: [Person]
     let mpaaRating: String
 //    let director: String
     let genres: [Genre]
     let id: String
     let imdbRating: Double
     //    let length: DateInterval
+    // Can live with this as a string for now, since it's only displayed.
     let lengthString: String
     let overview: String
     let posterURLString: String
     let releaseDate: Date
-    let releaseDateString: String = "xyzzy"
     let slug: String
     let title: String
     
@@ -35,12 +35,10 @@ struct Movie: Codable {
         case genres
         case id
         case imdbRating = "imdb_rating"
-//        case length
         case lengthString = "length"
         case overview
         case posterURLString = "poster"
         case releaseDate = "released_on"
-//        case releaseDateString = "released_on"
         case slug
         case title
     }
