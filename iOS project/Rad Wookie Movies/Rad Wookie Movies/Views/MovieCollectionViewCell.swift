@@ -32,15 +32,11 @@ class MovieCollectionViewCell: UICollectionViewCell {
                     // This cell might have been recyled already. Turn on Network Link Conditioner to exercise.
                     if self.movie?.id == movieId {
                         self.poster?.image = fetchedImage
-                    } else {
-                        print(#function, "skipping", self.movie?.title)
                     }
                 }
             }
         }
     }
     
-    private func loadPosterFromURLString(_ urlString: String) {
-        print(urlString)
-    }
+
 }

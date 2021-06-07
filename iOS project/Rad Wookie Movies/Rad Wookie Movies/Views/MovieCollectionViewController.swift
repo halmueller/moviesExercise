@@ -89,7 +89,6 @@ class MovieCollectionViewController: UICollectionViewController, UICollectionVie
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        print(genres.count)
         return genres.count
     }
 
