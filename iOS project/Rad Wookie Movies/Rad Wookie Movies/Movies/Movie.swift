@@ -12,7 +12,7 @@ struct Movie: Codable {
     let backdropURLString: String
     let cast: [Person]
     let mpaaRating: String
-//    let director: String
+//    let director: [Person]
     let genres: [Genre]
     let id: String
     let imdbRating: Double

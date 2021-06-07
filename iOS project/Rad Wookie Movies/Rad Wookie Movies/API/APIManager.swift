@@ -55,6 +55,7 @@ class APIManager : NSObject {
         return nil
     }
 
+    // TODO: refactor the two fetchMovies... functions into one, with a parameter
     func fetchMoviesForTitleQuery(_ searchText: String, completionHandler: @escaping ([Movie]?) -> Void) {
         if let queryURL = moviesQueryURL(searchText) {
             let task = urlSession.dataTask(with: queryURL) { [weak self] (data, response, error ) in
@@ -70,19 +71,20 @@ class APIManager : NSObject {
                 guard let self = self else { return }
                 
                 do {
-                    self.decoder.dateDecodingStrategy = .formatted(self.movieDateFormatter)
-                    let moviesPayload = try self.decoder.decode(MoviesServerPayload.self, from: content)
+                    let moviesPayload = try self.decodedMoviesPayload(content)
                     DispatchQueue.main.async {
-                        completionHandler(moviesPayload.movies)
+                        if let moviesPayload = moviesPayload {
+                            completionHandler(moviesPayload.movies)
+                        } else {
+                            completionHandler(nil)
+                        }
                     }
                 }
                 catch {
                     print(#function, "Failed to decode JSON")
                     print(error)
                 }
-                
             }
-            
             task.resume()
         }
         else {
@@ -90,6 +92,19 @@ class APIManager : NSObject {
             completionHandler(emptyMovies)
         }
     }
+    
+    fileprivate func decodedMoviesPayload(_ content: Data) throws -> MoviesServerPayload? {
+        do {
+            self.decoder.dateDecodingStrategy = .formatted(self.movieDateFormatter)
+            let moviesPayload = try self.decoder.decode(MoviesServerPayload.self, from: content)
+            return moviesPayload
+        }
+        catch {
+            print(#function, "Failed to decode JSON")
+            throw error
+        }
+    }
+    
     func fetchMovies (completionHandler: @escaping ([Movie]?) -> Void) {
 
         let task = urlSession.dataTask(with: moviesListURL()) { [weak self] (data, response, error ) in
@@ -105,10 +120,13 @@ class APIManager : NSObject {
             guard let self = self else { return }
             
             do {
-                self.decoder.dateDecodingStrategy = .formatted(self.movieDateFormatter)
-                let moviesPayload = try self.decoder.decode(MoviesServerPayload.self, from: content)
+                let moviesPayload = try self.decodedMoviesPayload(content)
                 DispatchQueue.main.async {
-                    completionHandler(moviesPayload.movies)
+                    if let moviesPayload = moviesPayload {
+                        completionHandler(moviesPayload.movies)
+                    } else {
+                        completionHandler(nil)
+                    }
                 }
             }
             catch {
