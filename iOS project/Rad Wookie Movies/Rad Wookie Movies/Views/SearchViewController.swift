@@ -7,12 +7,11 @@
 
 import UIKit
 
-class SearchViewController: UITableViewController, UISearchResultsUpdating {
+class SearchViewController: UITableViewController, UISearchResultsUpdating, UISearchControllerDelegate {
 
     var apiManager: APIManager?
     var foundMovies: [Movie] = [] {
         didSet {
-            print(#function, foundMovies.count, tableView)
             tableView.reloadData()
         }
     }
@@ -41,8 +40,12 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "movie", for: indexPath)
 
-        cell.textLabel?.text = foundMovies[indexPath.row].title
-
+        let movie = foundMovies[indexPath.row]
+        cell.textLabel?.text = movie.title + " (" + movie.mpaaRating + ")"
+        cell.detailTextLabel?.text = movie.releaseDateString + " " + "director" + "."
+        cell.isAccessibilityElement = true
+        cell.accessibilityLabel = movie.title
+        cell.accessibilityHint = "movie"
         return cell
     }
 
@@ -56,7 +59,7 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(#function, indexPath)
+
         selectedMovie = foundMovies[indexPath.row]
         
         performSegue(withIdentifier: "showMovieDetail", sender: self)
@@ -66,14 +69,15 @@ class SearchViewController: UITableViewController, UISearchResultsUpdating {
     
     func configureSearch() {
         searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search for a movie title or description"
         searchController.searchBar.showsSearchResultsButton = true
+        // Yes, there's a search bar in the storyboard already. But if I don't leave it there, the first row of results is obscured when I add THIS search bar.
         tableView.addSubview(searchController.searchBar)
     }
 
     // MARK: - UISearchResultsUpdating
     func updateSearchResults(for searchController: UISearchController) {
-        print(#function, searchController.searchBar.text)
         if let searchText = searchController.searchBar.text {
             apiManager?.fetchMoviesForTitleQuery(searchText) { [weak self] (foundMovies) in
                 if let foundMovies = foundMovies,

@@ -31,14 +31,9 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var yearLabel: UILabel?
     @IBOutlet weak var castLabel: UILabel?
     @IBOutlet weak var movieOverviewTextView: UITextView?
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
+   
     override func viewWillAppear(_ animated: Bool) {
         if let movie = movie {
-            print(movie.title)
             titleLabel?.text = movie.title + "(" + movie.mpaaRating + ")"
             lengthLabel?.text = movie.lengthString
             lengthLabel?.accessibilityLabel = "Running time \(movie.lengthString)"
@@ -71,8 +66,6 @@ class MovieDetailViewController: UIViewController {
                     }
                 }
             }
-
-            
         }
     }
     
@@ -92,7 +85,6 @@ class MovieDetailViewController: UIViewController {
                 // IMDB scores 0-10, but we show 1-5 stars
                 let stars = movie.imdbRating / 2
                 let fullStars = stars.rounded(.down)
-                print(movie.title, movie.imdbRating, fullStars, stars)
                 if fullStars < 5 {
                     star5?.image = stars > 4 ? partialStar : openStar
                 }
