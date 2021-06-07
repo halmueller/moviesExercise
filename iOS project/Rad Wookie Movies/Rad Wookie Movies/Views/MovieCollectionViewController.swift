@@ -37,6 +37,9 @@ class MovieCollectionViewController: UICollectionViewController, UICollectionVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.isAccessibilityElement = false
+        collectionView.shouldGroupAccessibilityChildren = true
+        
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             configureFlowLayout(layout)
         }
@@ -145,7 +148,11 @@ class MovieCollectionViewController: UICollectionViewController, UICollectionVie
     // MARK: - UICollectionViewDelegateFlowLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 300, height: 600)
+        return CGSize(width: 120, height: 220)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 10, bottom: 20, right: 10)
     }
 }
 
