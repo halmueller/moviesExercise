@@ -66,6 +66,13 @@ struct Movie: Codable {
         title = try container.decode(String.self, forKey: .title)
     }
 
+    private static var movieDateFormatter :DateFormatter = {
+        let result = DateFormatter()
+        result.timeStyle = .none
+        result.setLocalizedDateFormatFromTemplate("yyyy")
+        return result
+    }()
+    
     func releaseYearString() -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .none
