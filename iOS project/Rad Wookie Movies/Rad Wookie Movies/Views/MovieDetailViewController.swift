@@ -39,7 +39,7 @@ class MovieDetailViewController: UIViewController {
             lengthLabel?.accessibilityLabel = "Running time \(movie.lengthString)"
             yearLabel?.text = movie.releaseYearString()
             yearLabel?.accessibilityLabel = "Released \(movie.lengthString)"
-            directorsLabel?.text = "directors"
+            directorsLabel?.text = movie.directors.joined(separator: ", ")
             directorsLabel?.accessibilityLabel = "Directed by directors"
             castLabel?.text = "cast: " + movie.cast.joined(separator: ", ") + "."
             movieOverviewTextView?.text = movie.overview

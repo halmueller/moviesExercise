@@ -12,7 +12,7 @@ struct Movie: Codable {
     let backdropURLString: String
     let cast: [Person]
     let mpaaRating: String
-//    let director: [Person]
+    let directors: [Person]
     let genres: [Genre]
     let id: String
     let imdbRating: Double
@@ -31,7 +31,7 @@ struct Movie: Codable {
         case backdropURLString = "backdrop"
         case cast
         case mpaaRating = "classification"
-//        case director
+        case directors = "director"
         case genres
         case id
         case imdbRating = "imdb_rating"
@@ -43,6 +43,29 @@ struct Movie: Codable {
         case title
     }
     
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        backdropURLString = try container.decode(String.self, forKey: .backdropURLString)
+        cast = try container.decode([Person].self, forKey: .cast)
+        mpaaRating = try container.decode(String.self, forKey: .mpaaRating)
+        // API returns "directors" encoded as either a single sting, or an array of strings.
+        do {
+            let singleDirector = try container.decode(Person.self, forKey: .directors)
+            directors = [singleDirector]
+        } catch {
+            directors = try container.decode([Person].self, forKey: .directors)
+        }
+        genres = try container.decode([Genre].self, forKey: .genres)
+        id = try container.decode(String.self, forKey: .id)
+        imdbRating = try container.decode(Double.self, forKey: .imdbRating)
+        lengthString = try container.decode(String.self, forKey: .lengthString)
+        overview = try container.decode(String.self, forKey: .overview)
+        posterURLString = try container.decode(String.self, forKey: .posterURLString)
+        releaseDate = try container.decode(Date.self, forKey: .releaseDate)
+        slug = try container.decode(String.self, forKey: .slug)
+        title = try container.decode(String.self, forKey: .title)
+    }
+
     func releaseYearString() -> String {
         let formatter = DateFormatter()
         formatter.timeStyle = .none
